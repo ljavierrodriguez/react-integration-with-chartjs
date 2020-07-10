@@ -5,6 +5,7 @@ import Sidebar from './components/sidebar';
 import Navbar from './components/navbar';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Contact from './views/contact';
+import injectContext from './store/appContext';
 
 const App = props => {
   return (
@@ -29,4 +30,4 @@ const App = props => {
   )
 }
 
-export default App;
+export default injectContext(App);
