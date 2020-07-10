@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Home from './views/home';
+import Sidebar from './components/sidebar';
+import Navbar from './components/navbar';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Contact from './views/contact';
 
-function App() {
+const App = props => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <BrowserRouter>
+        <div className="d-flex" id="wrapper">
+          {/* <!-- Sidebar --> */}
+          <Sidebar />
+          {/* <!-- /#sidebar-wrapper --> */}
+          {/* <!-- Page Content --> */}
+          <div id="page-content-wrapper">
+            <Navbar />
+            <Switch>
+              <Route exact path="/contact" component={Contact} />
+              <Route exact path="/" component={Home} />
+            </Switch>
+          </div>
+          {/* <!-- /#page-content-wrapper --> */}
+        </div>
+      </BrowserRouter>
+    </>
+  )
 }
 
 export default App;
